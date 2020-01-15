@@ -1,5 +1,3 @@
-package HW0;
-
 public class BreakContinue {
 	  public static void windowPosSum(int[] a, int n) {
 	      /** your code here */ 

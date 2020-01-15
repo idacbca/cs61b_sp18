@@ -1,5 +1,3 @@
-package HW0;
-
 public class Max {
 	public static int max(int[] m) {
 		int x = 0;

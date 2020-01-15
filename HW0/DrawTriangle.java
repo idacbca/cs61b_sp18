@@ -1,5 +1,3 @@
-package HW0;
-
 public class DrawTriangle {
 
 	public static void drawTriangle(int n) {
