@@ -76,6 +76,16 @@ public class Planet {
     }
 
     public void update(double dt, double fx, double fy) {
-
+        double ax, ay, vx, vy, px, py;
+        ax = fx / this.mass;
+        ay = fy / this.mass;
+        vx = this.xxVel + ax * dt;
+        vy = this.yyVel + ay * dt;
+        this.xxVel = vx;
+        this.yyVel = vy;
+        px = this.xxPos + vx * dt;
+        py = this.yyPos + vy * dt;
+        this.xxPos = px;
+        this.yyPos = py;
     }
 }
