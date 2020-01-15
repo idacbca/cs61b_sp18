@@ -88,4 +88,10 @@ public class Planet {
         this.xxPos = px;
         this.yyPos = py;
     }
+
+    public void draw() {
+        double xP = this.xxPos;
+        double yP = this.yyPos;
+        StdDraw.picture(xP, yP, "images/" + imgFileName);
+    }
 }
