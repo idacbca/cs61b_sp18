@@ -1,2 +1,3 @@
-# cs61b_sp18
-CS61B Data Structures
+# CS61B Data Structures, Spring 2018
+Instructor: Josh Hug
+sp18.datastructur.es
