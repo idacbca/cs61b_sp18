@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
     /** Resize the underlying array of lesser than 25% usage and longer than the length of 16. */
     private void resize() {
         if (items.length >= 16 && items.length > 4 * size) {
-            resize(size / 2);
+            resize(items.length / 2);
         }
     }
 
