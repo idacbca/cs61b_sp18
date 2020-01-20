@@ -97,9 +97,9 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         lld1.addLast(0);
         lld1.addLast(1);
-        int a = lld1.removeFirst();
+        int a = lld1.removeLast();
 
-        boolean passed = a == 0;
+        boolean passed = a == 1;
 
         printTestStatus(passed);
     }

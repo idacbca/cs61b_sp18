@@ -102,7 +102,7 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null. */
     public T removeLast() {
         if (size != 0) {
-            T x = get(size);
+            T x = get(size - 1);
             nextLast = back(nextLast);
             items[nextLast] = null;
             size = size - 1;
