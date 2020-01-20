@@ -1,7 +1,7 @@
 /** Performs some basic linked list tests. */
 public class ArrayDequeTest {
 
-    /* Utility method for printing out empty checks. */
+    /** Utility method for printing out empty checks. */
     public static boolean checkEmpty(boolean expected, boolean actual) {
         if (expected != actual) {
             System.out.println("isEmpty() returned " + actual + ", but expected: " + expected);
@@ -10,7 +10,7 @@ public class ArrayDequeTest {
         return true;
     }
 
-    /* Utility method for printing out empty checks. */
+    /** Utility method for printing out empty checks. */
     public static boolean checkSize(int expected, int actual) {
         if (expected != actual) {
             System.out.println("size() returned " + actual + ", but expected: " + expected);
@@ -19,7 +19,7 @@ public class ArrayDequeTest {
         return true;
     }
 
-    /* Prints a nice message based on whether a test passed.
+    /** Prints a nice message based on whether a test passed.
      * The \n means newline. */
     public static void printTestStatus(boolean passed) {
         if (passed) {
@@ -78,9 +78,37 @@ public class ArrayDequeTest {
         printTestStatus(passed);
     }
 
+    private static void addRemoveFirstTest() {
+        System.out.println("Running add/remove first test.");
+
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        lld1.addFirst(0);
+        lld1.addFirst(1);
+        int a = lld1.removeFirst();
+
+        boolean passed = a == 1;
+
+        printTestStatus(passed);
+    }
+
+    private static void addRemoveLastTest() {
+        System.out.println("Running add/remove last test.");
+
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        lld1.addLast(0);
+        lld1.addLast(1);
+        int a = lld1.removeFirst();
+
+        boolean passed = a == 0;
+
+        printTestStatus(passed);
+    }
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
+        addRemoveFirstTest();
+        addRemoveLastTest();
     }
-} 
+}

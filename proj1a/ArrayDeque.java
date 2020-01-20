@@ -69,30 +69,42 @@ public class ArrayDeque<T> {
         System.out.println("");
     }
 
-    /** Removes and returns the item at the front of the deque. If no such item exists, returns null. */
+    /** Removes and returns the item at the front of the deque.
+     * If no such item exists, returns null. */
     public T removeFirst() {
         if (size != 0) {
             T x = get(0);
             T[] a = (T[]) new Object[items.length];
             System.arraycopy(items, 1, a, 0, size - 1);
+            items = a;
             size = size - 1;
+            resize();
             return x;
-        } else return null;
+        } else {
+            return null;
+        }
     }
 
-    /** Removes and returns the item at the back of the deque. If no such item exists, returns null. */
+    /** Removes and returns the item at the back of the deque.
+     * If no such item exists, returns null. */
     public T removeLast() {
         if (size != 0) {
             T x = get(size - 1);
             items[size - 1] = null;
             size = size - 1;
+            resize();
             return x;
-        } else return null;
+        } else {
+            return null;
+        }
     }
 
-    /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. */
+    /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
+     * If no such item exists, returns null. */
     public T get(int index) {
-        if (index > size) return null;
+        if (index > size) {
+            return null;
+        }
         return items[index];
     }
 }

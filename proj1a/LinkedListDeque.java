@@ -9,11 +9,11 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
     }
     private class DNode {
-        public T item;
-        public DNode prev;
-        public DNode next;
+        private T item;
+        private DNode prev;
+        private DNode next;
 
-        public DNode(T x, DNode p, DNode n) {
+        DNode(T x, DNode p, DNode n) {
             item = x;
             prev = p;
             next = n;
@@ -65,10 +65,11 @@ public class LinkedListDeque<T> {
         if (sentinel.next != sentinel) {
             size -= 1;
             DNode p = sentinel.next;
+            T x = p.item;
             if (p.next != sentinel) {
                 sentinel.next = p.next;
                 p.next.prev = sentinel;
-                return sentinel.next.item;
+                return x;
             } else {
                 sentinel.next = sentinel;
                 sentinel.prev = sentinel;
@@ -82,10 +83,11 @@ public class LinkedListDeque<T> {
         if (sentinel.prev != sentinel) {
             size -= 1;
             DNode p = sentinel.prev;
+            T x = p.item;
             if (p.prev != sentinel) {
                 sentinel.prev = p.prev;
                 p.prev.next = sentinel;
-                return sentinel.prev.item;
+                return x;
             } else {
                 sentinel.next = sentinel;
                 sentinel.prev = sentinel;
@@ -97,8 +99,10 @@ public class LinkedListDeque<T> {
 
     public T get(int index) {
         DNode p = sentinel;
-        if (p.next == sentinel) return null;
-        for (int n = 0; n < index; n++) {
+        if (p.next == sentinel) {
+            return null;
+        }
+        for (int n = 0; n < index + 1; n++) {
             if (p.next != sentinel) {
                 p = p.next;
             } else {
@@ -109,8 +113,12 @@ public class LinkedListDeque<T> {
     }
 
     private T getRecursive(int index, DNode p) {
-        if (p.next == sentinel) return null;
-        if (index == 0) return p.next.item;
+        if (p.next == sentinel) {
+            return null;
+        }
+        if (index == 0) {
+            return p.next.item;
+        }
         return getRecursive(index - 1, p.next);
     }
 
