@@ -89,6 +89,12 @@ public class LinkedListDequeTest {
 
         boolean passed = a == 1;
 
+        lld1 = new LinkedListDeque<Integer>();
+        lld1.addFirst(0);
+        int b = lld1.removeFirst();
+
+        passed = b == 0 && passed;
+
         printTestStatus(passed);
     }
 

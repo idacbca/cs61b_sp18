@@ -69,12 +69,11 @@ public class LinkedListDeque<T> {
             if (p.next != sentinel) {
                 sentinel.next = p.next;
                 p.next.prev = sentinel;
-                return x;
             } else {
                 sentinel.next = sentinel;
                 sentinel.prev = sentinel;
-                return null;
             }
+            return x;
         }
         return null;
     }
@@ -87,12 +86,11 @@ public class LinkedListDeque<T> {
             if (p.prev != sentinel) {
                 sentinel.prev = p.prev;
                 p.prev.next = sentinel;
-                return x;
             } else {
                 sentinel.next = sentinel;
                 sentinel.prev = sentinel;
-                return null;
             }
+            return x;
         }
         return null;
     }
