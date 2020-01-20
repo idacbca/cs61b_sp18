@@ -2,6 +2,12 @@ public class LinkedListDeque<T> {
     private DNode sentinel;
     private int size;
 
+    public LinkedListDeque() {
+        size = 0;
+        sentinel = new DNode(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
+    }
     private class DNode {
         public T item;
         public DNode prev;
@@ -110,12 +116,5 @@ public class LinkedListDeque<T> {
 
     public T getRecursive(int index) {
         return getRecursive(index, sentinel);
-    }
-
-    public LinkedListDeque() {
-        size = 0;
-        sentinel = new DNode(null, null, null);
-        sentinel.next = sentinel;
-        sentinel.prev = sentinel;
     }
 }
