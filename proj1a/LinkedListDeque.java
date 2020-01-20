@@ -3,8 +3,8 @@ public class LinkedListDeque<T> {
     private int size;
 
     private class DNode {
-        public DNode prev;
         public T item;
+        public DNode prev;
         public DNode next;
 
         public DNode(T x, DNode p, DNode n) {
@@ -16,31 +16,30 @@ public class LinkedListDeque<T> {
 
     public void addFirst(T item) {
         size += 1;
-        if (sentinel.next != null) {
+        if (sentinel.next != sentinel) {
             DNode p = sentinel.next;
-            p.prev = new DNode(item, null, p);
+            p.prev = new DNode(item, sentinel, p);
             sentinel.next = p.prev;
         } else {
-            sentinel.next = new DNode(item, null, null);
+            sentinel.next = new DNode(item, sentinel, sentinel);
             sentinel.prev = sentinel.next;
         }
     }
 
     public void addLast(T item) {
         size += 1;
-        if (sentinel.prev != null) {
+        if (sentinel.prev != sentinel) {
             DNode p = sentinel.prev;
-            p.next = new DNode(item, p, null);
+            p.next = new DNode(item, p, sentinel);
             sentinel.prev = p.next;
         } else {
-            sentinel.next = new DNode(item, null, null);
+            sentinel.next = new DNode(item, sentinel, sentinel);
             sentinel.prev = sentinel.next;
         }
     }
 
     public boolean isEmpty() {
-        if (sentinel.next == null && sentinel.prev == null) return true;
-        return false;
+        return sentinel.next == sentinel && sentinel.prev == sentinel;
     }
 
     public int size() {
@@ -49,7 +48,7 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
         DNode p = sentinel;
-        while (p.next != null) {
+        while (p.next != sentinel) {
             System.out.print(p.next.item + " ");
             p = p.next;
         }
@@ -57,16 +56,16 @@ public class LinkedListDeque<T> {
     }
 
     public T removeFirst() {
-        if (sentinel.next != null) {
+        if (sentinel.next != sentinel) {
             size -= 1;
             DNode p = sentinel.next;
-            if (p.next != null) {
+            if (p.next != sentinel) {
                 sentinel.next = p.next;
                 p.next.prev = sentinel;
                 return sentinel.next.item;
             } else {
-                sentinel.next = null;
-                sentinel.prev = null;
+                sentinel.next = sentinel;
+                sentinel.prev = sentinel;
                 return null;
             }
         }
@@ -74,16 +73,16 @@ public class LinkedListDeque<T> {
     }
 
     public T removeLast() {
-        if (sentinel.prev != null) {
+        if (sentinel.prev != sentinel) {
             size -= 1;
             DNode p = sentinel.prev;
-            if (p.prev != null) {
+            if (p.prev != sentinel) {
                 sentinel.prev = p.prev;
                 p.prev.next = sentinel;
                 return sentinel.prev.item;
             } else {
-                sentinel.next = null;
-                sentinel.prev = null;
+                sentinel.next = sentinel;
+                sentinel.prev = sentinel;
                 return null;
             }
         }
@@ -92,9 +91,9 @@ public class LinkedListDeque<T> {
 
     public T get(int index) {
         DNode p = sentinel;
-        if (p.next == null) return null;
+        if (p.next == sentinel) return null;
         for (int n = 0; n < index; n++) {
-            if (p.next != null) {
+            if (p.next != sentinel) {
                 p = p.next;
             } else {
                 return null;
@@ -104,7 +103,7 @@ public class LinkedListDeque<T> {
     }
 
     private T getRecursive(int index, DNode p) {
-        if (p.next == null) return null;
+        if (p.next == sentinel) return null;
         if (index == 0) return p.next.item;
         return getRecursive(index - 1, p.next);
     }
@@ -113,15 +112,10 @@ public class LinkedListDeque<T> {
         return getRecursive(index, sentinel);
     }
 
-    public LinkedListDeque(T item) {
-        size = 1;
-        sentinel = new DNode(null, null, null);
-        sentinel.next = new DNode(item, null, null);
-        sentinel.prev = sentinel.next;
-    }
-
     public LinkedListDeque() {
         size = 0;
         sentinel = new DNode(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
     }
 }
