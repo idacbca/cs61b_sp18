@@ -19,7 +19,7 @@ public class ArrayDeque<T> {
 
     /** Makes nextFirst/nextLast pointing at previous position. */
     private int back(int p) {
-        /** Adds an additional item.length since p - 1 could be negative. */
+        // Adds an additional item.length since p - 1 could be negative.
         return (p - 1 + items.length) % items.length;
     }
 
@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
     /** Resize the underlying array of lesser than 25% usage and longer than the length of 16. */
     private void resize() {
         if (items.length >= 16 && items.length > 4 * size) {
-            resize(size);
+            resize(size / 2);
         }
     }
 
