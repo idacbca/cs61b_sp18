@@ -41,8 +41,8 @@ public class ArrayDeque<T> {
     }
 
     /** Resize the underlying array of lesser than 25% usage and longer than the length of 16. */
-    private void resize() {
-        resize(items.length / 2);
+    private void downsize() {
+        resize(items.length / 4);
     }
 
     /** Adds an item of type T to the front of the deque. */
@@ -92,7 +92,7 @@ public class ArrayDeque<T> {
             items[nextFirst] = null;
             size = size - 1;
             if (isSparse()) {
-                resize();
+                downsize();
             }
             return x;
         } else {
@@ -109,7 +109,7 @@ public class ArrayDeque<T> {
             items[nextLast] = null;
             size = size - 1;
             if (isSparse()) {
-                resize();
+                downsize();
             }
             return x;
         } else {
