@@ -27,7 +27,7 @@ public class ArrayDeque<T> {
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         int p = forward(nextFirst);
-        for (int i = 0; i < size; i ++){
+        for (int i = 0; i < size; i++) {
             a[i] = items[p];
             p = forward(p);
         }
@@ -117,6 +117,10 @@ public class ArrayDeque<T> {
         if (index > size) {
             return null;
         }
-        return items[index];
+        int p = forward(nextFirst);
+        for (int i = 0; i < index; i++) {
+            p = forward(p);
+        }
+        return items[p];
     }
 }

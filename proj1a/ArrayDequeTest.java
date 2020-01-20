@@ -104,11 +104,33 @@ public class ArrayDequeTest {
         printTestStatus(passed);
     }
 
+    private static void getResizeTest() {
+        System.out.println("Running get/resize test.");
+
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        for (int i = 0; i < 320; i++) {
+            lld1.addLast(i);
+        }
+        int a = lld1.get(319);
+
+        boolean passed = a == 319;
+
+        for (int i = 0; i < 310; i++) {
+            lld1.removeLast();
+        }
+        int b = lld1.get(9);
+
+        passed = b == 9 && passed;
+
+        printTestStatus(passed);
+    }
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
         addRemoveFirstTest();
         addRemoveLastTest();
+        getResizeTest();
     }
 }
