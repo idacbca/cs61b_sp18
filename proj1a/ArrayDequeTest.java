@@ -118,9 +118,9 @@ public class ArrayDequeTest {
         for (int i = 0; i < 310; i++) {
             lld1.removeLast();
         }
-        int b = lld1.get(9);
 
-        passed = b == 9 && passed;
+        passed = lld1.get(9) == 9 && passed;
+        passed = lld1.get(0) == 0 && passed;
 
         printTestStatus(passed);
     }

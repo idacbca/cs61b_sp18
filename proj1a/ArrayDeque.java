@@ -32,6 +32,8 @@ public class ArrayDeque<T> {
             p = forward(p);
         }
         items = a;
+        nextFirst = capacity - 1;
+        nextLast = size;
     }
 
     /** Resize the underlying array of lesser than 25% usage and longer than the length of 16. */
@@ -78,7 +80,7 @@ public class ArrayDeque<T> {
         for (int i = forward(nextFirst); i < size; i = forward(i)) {
             System.out.print(items[i] + " ");
         }
-        System.out.println("");
+        System.out.println();
     }
 
     /** Removes and returns the item at the front of the deque.
