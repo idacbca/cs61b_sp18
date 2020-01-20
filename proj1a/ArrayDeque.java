@@ -36,11 +36,13 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
+    private boolean isSparse() {
+        return items.length >= 16 && items.length > 4 * size;
+    }
+
     /** Resize the underlying array of lesser than 25% usage and longer than the length of 16. */
     private void resize() {
-        if (items.length >= 16 && items.length > 4 * size) {
-            resize(items.length / 2);
-        }
+        resize(items.length / 2);
     }
 
     /** Adds an item of type T to the front of the deque. */
@@ -51,7 +53,6 @@ public class ArrayDeque<T> {
         items[nextFirst] = x;
         nextFirst = back(nextFirst);
         size = size + 1;
-        resize();
     }
 
     /** Adds an item of type T to the back of the deque. */
@@ -62,7 +63,6 @@ public class ArrayDeque<T> {
         items[nextLast] = x;
         nextLast = forward(nextLast);
         size = size + 1;
-        resize();
     }
 
     /** Returns true if deque is empty, false otherwise. */
@@ -91,7 +91,9 @@ public class ArrayDeque<T> {
             nextFirst = forward(nextFirst);
             items[nextFirst] = null;
             size = size - 1;
-            resize();
+            if (isSparse()) {
+                resize();
+            }
             return x;
         } else {
             return null;
@@ -106,7 +108,9 @@ public class ArrayDeque<T> {
             nextLast = back(nextLast);
             items[nextLast] = null;
             size = size - 1;
-            resize();
+            if (isSparse()) {
+                resize();
+            }
             return x;
         } else {
             return null;
