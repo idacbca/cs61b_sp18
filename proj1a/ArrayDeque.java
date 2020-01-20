@@ -87,8 +87,8 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null. */
     public T removeFirst() {
         if (size != 0) {
+            T x = get(0);
             nextFirst = forward(nextFirst);
-            T x = get(nextFirst);
             items[nextFirst] = null;
             size = size - 1;
             resize();
@@ -102,8 +102,8 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null. */
     public T removeLast() {
         if (size != 0) {
+            T x = get(size);
             nextLast = back(nextLast);
-            T x = get(nextLast);
             items[nextLast] = null;
             size = size - 1;
             resize();
@@ -116,7 +116,7 @@ public class ArrayDeque<T> {
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
      * If no such item exists, returns null. */
     public T get(int index) {
-        if (index > size) {
+        if (index > items.length) {
             return null;
         }
         int p = forward(nextFirst);

@@ -81,7 +81,7 @@ public class ArrayDequeTest {
     private static void addRemoveFirstTest() {
         System.out.println("Running add/remove first test.");
 
-        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         lld1.addFirst(0);
         lld1.addFirst(1);
         int a = lld1.removeFirst();
@@ -94,7 +94,7 @@ public class ArrayDequeTest {
     private static void addRemoveLastTest() {
         System.out.println("Running add/remove last test.");
 
-        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         lld1.addLast(0);
         lld1.addLast(1);
         int a = lld1.removeFirst();
@@ -107,7 +107,7 @@ public class ArrayDequeTest {
     private static void getResizeTest() {
         System.out.println("Running get/resize test.");
 
-        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         for (int i = 0; i < 320; i++) {
             lld1.addLast(i);
         }
@@ -121,6 +121,11 @@ public class ArrayDequeTest {
 
         passed = lld1.get(9) == 9 && passed;
         passed = lld1.get(0) == 0 && passed;
+
+        lld1.removeFirst();
+        lld1.removeLast();
+
+        passed = lld1.get(0) == 1 && passed;
 
         printTestStatus(passed);
     }
