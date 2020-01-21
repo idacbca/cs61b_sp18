@@ -36,6 +36,7 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
+    /** Judging if this array is sparse. */
     private boolean isSparse() {
         return items.length >= 16 && items.length > 4 * size;
     }
@@ -48,7 +49,7 @@ public class ArrayDeque<T> {
     /** Adds an item of type T to the front of the deque. */
     public void addFirst(T x) {
         if (size == items.length) {
-            resize(size * 2);
+            resize(items.length * 2);
         }
         items[nextFirst] = x;
         nextFirst = back(nextFirst);
@@ -58,7 +59,7 @@ public class ArrayDeque<T> {
     /** Adds an item of type T to the back of the deque. */
     public void addLast(T x) {
         if (size == items.length) {
-            resize(size * 2);
+            resize(items.length * 2);
         }
         items[nextLast] = x;
         nextLast = forward(nextLast);
