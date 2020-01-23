@@ -32,7 +32,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindromeCC() {
+    public void testIsPalindromeOBO() {
         CharacterComparator offByOne = new OffByOne();
 
         String A = "a";
