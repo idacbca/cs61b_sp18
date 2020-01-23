@@ -17,6 +17,11 @@ public class ArrayDeque<T> {
         return (p + 1) % items.length;
     }
 
+    /** Makes nextFirst/nextLast (p) pointing at the next n position. */
+    private int forward(int p, int n) {
+        return (p + n) % items.length;
+    }
+
     /** Makes nextFirst/nextLast pointing at previous position. */
     private int back(int p) {
         // Adds an additional item.length since p - 1 could be negative.
@@ -124,10 +129,7 @@ public class ArrayDeque<T> {
         if (index > items.length) {
             return null;
         }
-        int p = forward(nextFirst);
-        for (int i = 0; i < index; i++) {
-            p = forward(p);
-        }
+        int p = forward(nextFirst, index + 1);
         return items[p];
     }
 }
