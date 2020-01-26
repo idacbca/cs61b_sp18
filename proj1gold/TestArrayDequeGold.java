@@ -14,8 +14,7 @@ public class TestArrayDequeGold {
                 ads1.addFirst(i);
                 massage1 = massage1 + "addFirst(" + i + ")\n";
             }
-            assertEquals(massage1 + "removeFirst()\n"
-                            + "An error occurs following the above sequence.",
+            assertEquals(massage1 + "removeFirst()\n",
                     ads1.removeFirst(), sad1.removeFirst());
         }
     }
@@ -32,8 +31,7 @@ public class TestArrayDequeGold {
                 ads1.addLast(i);
                 massage1 = massage1 + "addLast(" + i + ")\n";
             }
-            assertEquals(massage1 + "removeLast()\n"
-                            + "An error occurs following the above sequence.",
+            assertEquals(massage1 + "removeLast()\n",
                     ads1.removeLast(), sad1.removeLast());
         }
     }
@@ -61,11 +59,11 @@ public class TestArrayDequeGold {
             double randomNum = StdRandom.uniform();
             if (randomNum < 0.5) {
                 massage1 = massage1 + "removeFirst()\n";
-                assertEquals(massage1 + "An error occurs following the above sequence.",
+                assertEquals(massage1,
                         ads1.removeFirst(), sad1.removeFirst());
             } else {
                 massage1 = massage1 + "removeLast()\n";
-                assertEquals(massage1 + "An error occurs following the above sequence.",
+                assertEquals(massage1,
                         ads1.removeLast(), sad1.removeLast());
             }
         }
