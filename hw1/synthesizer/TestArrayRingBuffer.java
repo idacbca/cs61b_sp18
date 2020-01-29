@@ -17,8 +17,12 @@ public class TestArrayRingBuffer {
     public void testEnqueueDequeue() {
         ArrayRingBuffer<Integer> arb = new ArrayRingBuffer<>(10);
         arb.enqueue(10);
+        arb.enqueue(9);
+        arb.enqueue(8);
         int d1 = arb.dequeue();
+        int d2 = arb.dequeue();
         assertEquals(10, d1);
+        assertEquals(9, d2);
     }
 
     @Test
